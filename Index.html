@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaurya Seth - Professional Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0077B6; /* Professional Blue */
+            --secondary-color: #00B4D8; /* Vibrant Teal */
+            --accent-color: #FFB703; /* Warm Accent */
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #495057;
+            --heading-color: #212529;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius-main: 12px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 50px 40px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            margin-top: 30px;
+            border-radius: var(--border-radius-main);
+            box-shadow: var(--shadow);
+        }
+
+        .profile-header img {
+            border-radius: 50%;
+            margin-bottom: 25px;
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border: 5px solid white;
+            transition: transform 0.4s ease;
+        }
+        .profile-header img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .header-info h1 {
+            margin: 0 0 10px 0;
+            color: white;
+            font-family: 'Roboto Slab', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        .header-info .subtitle {
+            margin: 8px 0 20px 0;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+        .social-links svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        nav {
+            background: var(--card-bg);
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            margin-top: 30px;
+            border-radius: 50px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 25px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            font-weight: 600;
+            margin: 0 5px;
+        }
+
+        nav a:hover {
+            background: var(--primary-color);
+            color: var(--card-bg);
+        }
+        nav a.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--card-bg);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .page-content {
+            display: none;
+            padding: 40px;
+            background: var(--card-bg);
+            margin: 30px 0;
+            border-radius: var(--border-radius-main);
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: var(--heading-color);
+            font-family: 'Roboto Slab', serif;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        h2 svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--primary-color);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #fdfdff;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-left-color 0.3s ease;
+            border: 1px solid #eef;
+        }
+        ul li:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+            border-left-color: red;
+        }
+        ul li strong {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        #skills .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(0, 180, 216, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        .skill-category:hover::before {
+            left: 100%;
+        }
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        .skill-category h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .skill-category h3 svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary-color);
+        }
+        .skill-category ul {
+            margin: 0;
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+        .skill-category li {
+            background: none;
+            border: none;
+            padding: 5px 0;
+            margin: 0;
+        }
+        
+        .contact-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+        }
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+        .contact-info svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary-color);
+        }
+
+        .site-footer {
+            background: #343a40;
+            color: var(--light-bg);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+        .site-footer p {
+            margin: 0 0 15px 0;
+        }
+        .footer-links a {
+            margin: 0 15px;
+            color: var(--light-bg);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (min-width: 768px) {
+            .profile-header {
+                flex-direction: row;
+                text-align: left;
+            }
+            .profile-header img {
+                margin-right: 40px;
+                margin-bottom: 0;
+            }
+            .header-info .subtitle, .social-links {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="profile-header">
+                <img src="C:\Anudip Course\Html\Potfolio\1657207853370.jpg" alt="Shaurya Seth">
+                <div class="header-info">
+                    <h1>Shaurya Seth</h1>
+                    <p class="subtitle">Data Analytics | Web Development | Blockchain</p>
+                    <div class="social-links">
+                        <a href="mailto:shauryaseth68@gmail.com" title="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/shaurya-seth-59949b240" target="_blank" title="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4s1.39.63 1.39 1.4v4.93h2.8zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68zm-1.39 9.94v-8.37H8.27v8.37H5.49z"/></svg>
+                        </a>
+                        <a href="https://github.com/Shaurya99t" target="_blank" title="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-1.02-.01-1.8-2.61.55-3.17-1.15-3.17-1.15-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <nav>
+                <a href="#about" class="nav-link active">About Me</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <main>
+            <div id="about" class="page-content active">
+                <h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>About Me</h2>
+                <p>
+                    I am a dedicated and passionate technology enthusiast, currently pursuing a B.Tech in Computer Science. My core expertise lies at the intersection of Data Analytics, Web Development, and Blockchain technology, where I aim to build innovative, data-driven, and decentralized solutions. I thrive in collaborative environments and am committed to continuous learning and professional growth to drive organizational success.
+                </p>
+                <p>Beyond coding, I have a creative side that I express through video and photo editing. I'm also an avid traveler and music lover, always eager to explore new places and cultures. These experiences have honed my adaptability and communication skills, making me an effective team player.</p>
+            </div>
+
+            <div id="projects" class="page-content">
+                <h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7s2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/></svg>My Projects</h2>
+                <ul>
+                    <li>
+                        <strong>House Price Prediction During COVID-19:</strong>
+                        This project involved a deep dive into real estate data to analyze the pandemic's impact. Using machine learning models like Linear Regression and Gradient Boosting, I developed a system to predict future housing prices, offering valuable market insights.
+                        (<a href="https://github.com/Shaurya99t/House-Price-Prediction" target="_blank">View on GitHub</a>)
+                    </li>
+                    <li>
+                        <strong>Annual Sales Trend Analysis:</strong>
+                        Visualized and analyzed sales data to identify patterns and provide actionable insights for companies.
+                        (<a href="https://github.com/Shaurya99t/Sales-Trend-Analysis" target="_blank">View on GitHub</a>)
+                    </li>
+                    <li>
+                        <strong>Real-Time Product Price Recommendation:</strong>
+                        An interactive web tool built with Streamlit that scrapes e-commerce sites in real-time. It helps users find the best prices for products, demonstrating skills in web scraping, data processing, and front-end development.
+                        (<a href="https://github.com/Shaurya99t/Price-Recommendation-System" target="_blank">View on GitHub</a>)
+                    </li>
+                    <li>
+                        <strong>Free Education Platform (Hackathon Project):</strong>
+                        Developed a platform using HTML, CSS, and JS to provide accessible education for physically abled students.
+                        (<a href="https://github.com/Shaurya99t/Free-Education-Platform" target="_blank">View on GitHub</a>)
+                    </li>
+                    <li>
+                        <strong>Personal Cryptocurrency Development:</strong>
+                        Created a prototype for a cryptocurrency project with a fully functional blockchain, exploring concepts of digital currency and decentralized finance.
+                        (<a href="https://github.com/Shaurya99t/Cryptocurrency-Development" target="_blank">View on GitHub</a>)
+                    </li>
+                     <li>
+                        <strong>Store Management System:</strong>
+                        Designed a mini project for managing inventory and sales for a store, focusing on database management and user interface design.
+                        (<a href="https://github.com/Shaurya99t/Store-Management-System" target="_blank">View on GitHub</a>)
+                    </li>
+                </ul>
+            </div>
+
+            <div id="skills" class="page-content">
+                <h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2V7h2v10zm-4 0H8V7h2v10zm8 0h-2V7h2v10z"/></svg>Data Science & ML</h3>
+                        <ul>
+                            <li>Pandas & NumPy</li>
+                            <li>Scikit-learn</li>
+                            <li>Matplotlib</li>
+                            <li>Power BI</li>
+                            <li>SQL</li>
+                            <li>Excel (Advanced)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v10z"/></svg>Web Development</h3>
+                        <ul>
+                            <li>HTML & CSS</li>
+                            <li>JavaScript</li>
+                            <li>Python (Flask)</li>
+                            <li>Bootstrap</li>
+                            <li>Streamlit</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>Emerging Tech & Tools</h3>
+                        <ul>
+                            <li>Java & C++</li>
+                            <li>Git & GitHub</li>
+                            <li>Solidity</li>
+                            <li>Truffle & Ganache</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="education" class="page-content">
+                <h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>Education & Certifications</h2>
+                <ul>
+                    <li>
+                        <strong>Bachelor of Technology in Computer Science</strong> (2022 – 2025) <br>
+                        IMS Engineering College, Ghaziabad
+                    </li>
+                     <li>
+                        <strong>Intermediate (Class XII)</strong> (2020) <br>
+                        Sunbeam School, Narayanpur, Mirzapur - 70%
+                    </li>
+                    <li>
+                        <strong>High School (Class X)</strong> (2018) <br>
+                        Sunbeam School, Narayanpur, Mirzapur - 65%
+                    </li>
+                    <li>
+                        <strong>Data Analytics Internship Certificate</strong> <br>
+                        Froyo Technologies - Gained hands-on experience with Python for data analysis.
+                    </li>
+                     <li>
+                        <strong>AI/ML Training Certificate</strong> <br>
+                        Softpro - Completed intensive training on core AI and Machine Learning concepts.
+                    </li>
+                </ul>
+            </div>
+            
+            <div id="contact" class="page-content">
+                <h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>Get In Touch</h2>
+                <p>
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out to me via email or connect with me on my social profiles.
+                </p>
+                <div class="contact-info">
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+                        <a href="mailto:shauryaseth68@gmail.com">shauryaseth68@gmail.com</a>
+                    </p>
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4s1.39.63 1.39 1.4v4.93h2.8zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68zm-1.39 9.94v-8.37H8.27v8.37H5.49z"/></svg>
+                        <a href="https://www.linkedin.com/in/shaurya-seth-59949b240" target="_blank">linkedin.com/in/shaurya-seth-59949b240</a>
+                    </p>
+                </div>
+                <a href="mailto:shauryaseth68@gmail.com" class="contact-button">Say Hello!</a>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Shaurya Seth. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="mailto:shauryaseth68@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/shaurya-seth-59949b240" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Shaurya99t" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page-content');
+
+            function showPage(pageId) {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                const targetPage = document.querySelector(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                }
+                
+                const targetLink = document.querySelector(`a[href="${pageId}"]`);
+                if(targetLink) {
+                    targetLink.classList.add('active');
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const pageId = this.getAttribute('href');
+                    showPage(pageId);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+            showPage('#about');
+        });
+    </script>
+
+</body>
+</html>
